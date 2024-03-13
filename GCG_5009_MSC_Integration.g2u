@@ -1,0 +1,885 @@
+Program.Sub.ScreenSU.Start
+Gui.Form..Create
+Gui.Form..Size(8400,4680)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..MousePointer(0)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form..MaxButton(False)
+Gui.Form..Sizeable(False)
+Gui.Form..Caption("MSC Vending Machine Integration Maintenance")
+Gui.Form.lblFile.Create(Label,"Vending Machine File Directory",True,2370,255,0,135,180,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtFile.Create(TextBox,"",True,8010,300,0,150,390,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtFile.TabStop(True)
+Gui.Form.txtFile.TabIndex(1)
+Gui.Form.txtFile.Event(LostFocus,txtFile_LostFocus)
+Gui.Form.lblPart.Create(Label,"Sequence for Part in File",True,1935,255,0,135,885,True,0,"Arial",8,-2147483633,0)
+Gui.Form.optMat.Create(Option)
+Gui.Form.optMat.Size(1725,255)
+Gui.Form.optMat.Position(255,1095)
+Gui.Form.optMat.TabStop(True)
+Gui.Form.optMat.TabIndex(2)
+Gui.Form.optMat.Caption("Material Sequence")
+Gui.Form.optMisc.Create(Option)
+Gui.Form.optMisc.Size(2220,255)
+Gui.Form.optMisc.Position(255,1365)
+Gui.Form.optMisc.TabStop(True)
+Gui.Form.optMisc.TabIndex(3)
+Gui.Form.optMisc.Caption("Miscellaneous Sequence")
+Gui.Form.lblJob.Create(Label,"Job (J), Suffix (S) and Seq (Q) Format",True,4980,255,0,2880,885,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtJob.Create(TextBox,"",True,4935,300,0,2895,1095,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtJob.TabStop(True)
+Gui.Form.txtJob.TabIndex(4)
+Gui.Form.lblLog.Create(Label,"Days to Keep Log Files",True,1935,255,0,135,1830,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtLog.Create(TextBox,"",True,690,300,0,150,2040,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtLog.TabStop(True)
+Gui.Form.txtLog.TabIndex(7)
+Gui.Form.txtLog.NumericOnly(2)
+Gui.Form.lblHistory.Create(Label,"Days to Keep Transaction History Records",True,3210,255,0,2040,1830,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtHistory.Create(TextBox,"",True,690,300,0,2055,2040,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtHistory.TabStop(True)
+Gui.Form.txtHistory.TabIndex(8)
+Gui.Form.txtHistory.NumericOnly(2)
+Gui.Form.cmdSave.Create(Button)
+Gui.Form.cmdSave.Size(1155,435)
+Gui.Form.cmdSave.Position(240,3825)
+Gui.Form.cmdSave.Caption("Save")
+Gui.Form.cmdSave.Event(Click,cmdSave_Click)
+Gui.Form.cmdSave.TabStop(True)
+Gui.Form.cmdSave.TabIndex(15)
+Gui.Form.cmdReset.Create(Button)
+Gui.Form.cmdReset.Size(1155,435)
+Gui.Form.cmdReset.Position(1560,3825)
+Gui.Form.cmdReset.TabStop(True)
+Gui.Form.cmdReset.TabIndex(16)
+Gui.Form.cmdReset.Caption("Reset")
+Gui.Form.cmdReset.Event(Click,cmdReset_Click)
+Gui.Form.lblSkip.Create(Label,"Use (X) to skip characters",True,4980,255,0,2880,1470,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtVendor.Create(TextBox,"",True,1005,300,0,150,2655,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtVendor.TabStop(True)
+Gui.Form.txtVendor.TabIndex(9)
+Gui.Form.txtVendor.MaxLength(6)
+Gui.Form.lblVendor.Create(Label,"Vendor for POs",True,1290,255,0,135,2445,True,0,"Arial",8,-2147483633,0)
+Gui.Form.cmdVendorBRW.Create(Button)
+Gui.Form.cmdVendorBRW.Size(390,390)
+Gui.Form.cmdVendorBRW.Position(1320,2610)
+Gui.Form.cmdVendorBRW.Caption("^")
+Gui.Form.cmdVendorBRW.Event(Click,cmdVendorBRW_Click)
+Gui.Form.cmdVendorBRW.TabStop(True)
+Gui.Form.cmdVendorBRW.TabIndex(10)
+Gui.Form.txtGLAcct.Create(TextBox,"",True,1665,300,0,2055,2655,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtGLAcct.TabStop(True)
+Gui.Form.txtGLAcct.TabIndex(11)
+Gui.Form.txtGLAcct.MaxLength(15)
+Gui.Form.lblGLAcct.Create(Label,"GL Account for POs",True,1635,255,0,2040,2445,True,0,"Arial",8,-2147483633,0)
+Gui.Form.cmdGLAcctBRW.Create(Button)
+Gui.Form.cmdGLAcctBRW.Size(390,390)
+Gui.Form.cmdGLAcctBRW.Position(3885,2610)
+Gui.Form.cmdGLAcctBRW.Caption("^")
+Gui.Form.cmdGLAcctBRW.Event(Click,cmdGLAcctBRW_Click)
+Gui.Form.cmdGLAcctBRW.TabStop(True)
+Gui.Form.cmdGLAcctBRW.TabIndex(12)
+Gui.Form.txtEmail.Create(TextBox,"",True,8010,300,0,150,3360,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtEmail.TabStop(True)
+Gui.Form.txtEmail.TabIndex(14)
+Gui.Form.lblEmail.Create(Label,"Emails for PO Creation Notification (separated by comma) (Optional)",True,7995,255,0,135,3150,True,0,"Arial",8,-2147483633,0)
+Gui.Form.txtDue.Create(TextBox,"",True,690,300,0,4620,2655,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtDue.TabStop(True)
+Gui.Form.txtDue.TabIndex(13)
+Gui.Form.txtDue.NumericOnly(2)
+Gui.Form.lblDue.Create(Label,"PO Due Date Lead Time in Work Days",True,2865,255,0,4605,2445,True,0,"Arial",8,-2147483633,0)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.External.Include.Library("450100.lib")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'\-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
+'\Author: Bix																														/
+'\Date: 7/11/2018																													/
+'\Customer: Hall Industries, Inc.																										/
+'\Project: MSC Vending Machine Integration																							/
+'\GCG_5009_MSC_Integration.g2u																									/
+'\Program will include a maintenance program for fine tuning the integration and the actual integration GAB service attached to Online Update	/
+'\-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.If(V.Caller.Hook,=,38130)
+	'Integration Program running on Online Update
+	F.Intrinsic.Control.CallSub(IntegrateMSCFile)
+F.Intrinsic.Control.ElseIf(V.Caller.Switches,=,"Z")
+	'Menu Item used with weekly reports from MSC to generate POs
+	F.Intrinsic.Control.CallSub(OpenWeeklyReport)
+F.Intrinsic.Control.ElseIf(V.Caller.Switches,=,"M")
+	'Maintenance Program
+	F.Intrinsic.Control.CallSub(OpenMaintenanceScreen)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.OpenConnection.Start
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+F.ODBC.Connection!con.OpenCompanyConnection
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {3}->{2}{1}Error Occurred {4} with description {5}{1}{1}GAB Version: {6}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Args.sOtherSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.OpenConnection.End
+
+Program.Sub.CloseConnection.Start
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {3}->{2}{1}Error Occurred {4} with description {5}{1}{1}GAB Version: {6}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Args.sOtherSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.CloseConnection.End
+
+Program.Sub.OpenMaintenanceScreen.Start
+'Populates screen with data from DB
+V.Local..BulkDeclareString(sError,sFileDir)
+V.Local.bDirCheck.Declare(Boolean)
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+'FILE_DIR(String), MAT_SEQ(Boolean), MISC_SEQ(Boolean), JOB_FORMAT(String), LOG_LENGTH(Long), HIST_LENGTH(Long), VENDOR(String), GL_ACCT(String), DUE_LEAD(Long), EMAIL(String)
+F.Data.DataTable.CreateFromSQL("dtMaint","con","select * from GCG_5009_MSC_MAINT;",True)
+F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+
+'First time setup - create default entry and add directories for it if they don't exist
+F.Intrinsic.Control.If(V.DataTable.dtMaint.RowCount,=,0)
+	F.Intrinsic.String.Build("{0}\CUSTOM\",V.Caller.GlobalDir,V.Local.sFileDir)
+	F.Intrinsic.File.DirExists(V.Local.sFileDir,V.Local.bDirCheck)
+	F.Intrinsic.Control.If(V.Local.bDirCheck,=,False)
+		F.Intrinsic.File.CreateDir(V.Local.sFileDir)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Build("{0}\CUSTOM\5009\",V.Caller.GlobalDir,V.Local.sFileDir)
+	F.Data.DataTable.AddRow("dtMaint","FILE_DIR",V.Local.sFileDir,"MAT_SEQ",True,"MISC_SEQ",False,"JOB_FORMAT","XXJJJJJJSSSQQQQQQ","LOG_LENGTH",30,"HIST_LENGTH",30,"VENDOR","MSC","GL_ACCT","100","DUE_LEAD",5,"ID",1)
+	F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+	F.Data.DataTable.SaveToDB("dtMaint","con","GCG_5009_MSC_MAINT","ID",256)
+	F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+	F.Intrinsic.File.DirExists(V.Local.sFileDir,V.Local.bDirCheck)
+	F.Intrinsic.Control.If(V.Local.bDirCheck,=,False)
+		F.Intrinsic.File.CreateDir(V.Local.sFileDir)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Build("{0}\Vending\",V.Caller.FilesDir,V.Local.sFileDir)
+	F.Intrinsic.File.DirExists(V.Local.sFileDir,V.Local.bDirCheck)
+	F.Intrinsic.Control.If(V.Local.bDirCheck,=,False)
+		F.Intrinsic.File.CreateDir(V.Local.sFileDir)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Build("{0}\Vending\Complete\",V.Caller.FilesDir,V.Local.sFileDir)
+	F.Intrinsic.File.DirExists(V.Local.sFileDir,V.Local.bDirCheck)
+	F.Intrinsic.Control.If(V.Local.bDirCheck,=,False)
+		F.Intrinsic.File.CreateDir(V.Local.sFileDir)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Build("{0}\Vending\Exceptions\",V.Caller.FilesDir,V.Local.sFileDir)
+	F.Intrinsic.File.DirExists(V.Local.sFileDir,V.Local.bDirCheck)
+	F.Intrinsic.Control.If(V.Local.bDirCheck,=,False)
+		F.Intrinsic.File.CreateDir(V.Local.sFileDir)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Build("{0}\Vending\Failed\",V.Caller.FilesDir,V.Local.sFileDir)
+	F.Intrinsic.File.DirExists(V.Local.sFileDir,V.Local.bDirCheck)
+	F.Intrinsic.Control.If(V.Local.bDirCheck,=,False)
+		F.Intrinsic.File.CreateDir(V.Local.sFileDir)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Build("{0}\Vending\Processed\",V.Caller.FilesDir,V.Local.sFileDir)
+	F.Intrinsic.File.DirExists(V.Local.sFileDir,V.Local.bDirCheck)
+	F.Intrinsic.Control.If(V.Local.bDirCheck,=,False)
+		F.Intrinsic.File.CreateDir(V.Local.sFileDir)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.CallSub(PopulateMaintScreen)
+
+'\-----------------------------------------------------------------------------------------/
+'\If more options outside the disabled ones are included, the		/
+'\	custom table will need updating								/
+'\-----------------------------------------------------------------------------------------/
+
+Gui.Form..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.OpenMaintenanceScreen.End
+
+Program.Sub.Form_UnLoad.Start
+'Closes DT and ends program
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+F.Data.DataTable.Close("dtMaint")
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.cmdSave_Click.Start
+'Updates DT with fields on screen and then saves to DB
+V.Local.sError.Declare(String)
+V.Local.sEmail.Declare(String)
+F.Intrinsic.Control.Try
+
+F.Intrinsic.String.Replace(V.Screen.Form!txtEmail.Text.Trim," ","",V.Local.sEmail)
+Gui.Form.txtEmail.Text(V.Local.sEmail)
+
+F.Intrinsic.Control.If(V.Screen.Form!txtFile.Text.Trim,!=,V.DataTable.dtMaint(0).FILE_DIR!FieldValTrim,"or",V.Screen.Form!optMat.Value,!=,V.DataTable.dtMaint(0).MAT_SEQ!FieldVal,V.Screen.Form!txtJob.Text.Trim,!=,V.DataTable.dtMaint(0).JOB_FORMAT!FieldValTrim,V.Screen.Form!txtLog.Text.Long,!=,V.DataTable.dtMaint(0).LOG_LENGTH!FieldVal,V.Screen.Form!txtHistory.Text.Long,!=,V.DataTable.dtMaint(0).HIST_LENGTH!FieldVal,V.Screen.Form!txtVendor.Text.Trim,!=,V.DataTable.dtMaint(0).VENDOR!FieldValTrim,V.Screen.Form!txtGLAcct.Text.Trim,!=,V.DataTable.dtMaint(0).GL_ACCT!FieldValTrim,V.Screen.Form!txtDue.Text.Long,!=,V.DataTable.dtMaint(0).DUE_LEAD!FieldVal,V.Screen.Form!txtEmail.Text.Trim,!=,V.DataTable.dtMaint(0).EMAIL!FieldValTrim)
+	F.Data.DataTable.SetValue("dtMaint",0,"FILE_DIR",V.Screen.Form!txtFile.Text.Trim,"MAT_SEQ",V.Screen.Form!optMat.Value,"MISC_SEQ",V.Screen.Form!optMisc.Value,"JOB_FORMAT",V.Screen.Form!txtJob.Text.Trim,"LOG_LENGTH",V.Screen.Form!txtLog.Text.Long,"HIST_LENGTH",V.Screen.Form!txtHistory.Text.Long,"VENDOR",V.Screen.Form!txtVendor.Text.Trim,"GL_ACCT",V.Screen.Form!txtGLAcct.Text.Trim,"DUE_LEAD",V.Screen.Form!txtDue.Text.Long,"EMAIL",V.Screen.Form!txtEmail.Text.Trim)
+
+	F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+	F.Data.DataTable.SaveToDB("dtMaint","con","GCG_5009_MSC_MAINT","ID",256)
+	F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+	F.Data.DataTable.AcceptChanges("dtMaint")
+
+	F.Intrinsic.UI.Msgbox("Saved!")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdSave_Click.End
+
+Program.Sub.cmdReset_Click.Start
+'Repopulates fields from DT
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.CallSub(PopulateMaintScreen)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdReset_Click.End
+
+Program.Sub.txtFile_LostFocus.Start
+'Checks to see if Directory path is FQP with a "\" at the end
+V.Local..BulkDeclareString(sError,sFileDir,sLastChar)
+F.Intrinsic.Control.Try
+
+V.Local.sFileDir.Set(V.Screen.Form!txtFile.Text.Trim)
+F.Intrinsic.String.Right(V.Local.sFileDir,1,V.Local.sLastChar)
+F.Intrinsic.Control.If(V.Local.sLastChar,!=,"\")
+	F.Intrinsic.String.Build("{0}\",V.Local.sFileDir,V.Local.sFileDir)
+	Gui.Form.txtFile.Text(V.Local.sFileDir)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.txtFile_LostFocus.End
+
+Program.Sub.PopulateMaintScreen.Start
+'Populates Maintenance Screen with values from DT
+V.Local.sError.Declare(String)
+F.Intrinsic.Control.Try
+
+Gui.Form.txtFile.Text(V.DataTable.dtMaint(0).FILE_DIR!FieldValTrim)
+Gui.Form.optMat.Value(V.DataTable.dtMaint(0).MAT_SEQ!FieldVal)
+Gui.Form.optMisc.Value(V.DataTable.dtMaint(0).MISC_SEQ!FieldVal)
+Gui.Form.txtJob.Text(V.DataTable.dtMaint(0).JOB_FORMAT!FieldValTrim)
+Gui.Form.txtLog.Text(V.DataTable.dtMaint(0).LOG_LENGTH!FieldVal)
+Gui.Form.txtHistory.Text(V.DataTable.dtMaint(0).HIST_LENGTH!FieldVal)
+Gui.Form.txtVendor.Text(V.DataTable.dtMaint(0).VENDOR!FieldValTrim)
+Gui.Form.txtGLAcct.Text(V.DataTable.dtMaint(0).GL_ACCT!FieldValTrim)
+Gui.Form.txtEmail.Text(V.DataTable.dtMaint(0).EMAIL!FieldValTrim)
+Gui.Form.txtDue.Text(V.DataTable.dtMaint(0).DUE_LEAD!FieldVal)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.PopulateMaintScreen.End
+
+Program.Sub.IntegrateMSCFile.Start
+'Reads in file exported by vending machine
+V.Local..BulkDeclareString(sError,sFileDir,sFileList,sFilePath,sFile,sFileType,sFileUploaded,sFileUploadedPath,sFileFailed,sFileFailedPath,sFileExceptions,sExcept,sJobForm,sSQL,sRet,sPart,sRev,sPartDesc,sJob,sSfx,sSeq,sQty,sUserID,sLine,sTime,sForm,sUpload,sCost,sChar,sFileString,sFileMoved,sFileMovedPath,sTotal,sOnHandQty,sFilter)
+V.Local..BulkDeclareBoolean(bInvalidJob,bFileExists,bZeroQtyIssue,bIncorrectFormat,bMatMiscSeq,bCharComp,bInvalidPart,bInsufficientQty,bZeroCostIssue)
+V.Local..BulkDeclareDate(dDate,dLogCutoff,dHistCutoff,dTime)
+V.Local..BulkDeclareLong(iCnt,iLine,iRemoveChar,iDateDiff,iChar)
+V.Local.fTotal.Declare(Float)
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+'FILE_DIR(String), MAT_SEQ(Boolean), MISC_SEQ(Boolean), JOB_FORMAT(String), LOG_LENGTH(Long), HIST_LENGTH(Long)
+F.Data.DataTable.CreateFromSQL("dtMaint","con","select * from GCG_5009_MSC_MAINT;",True)
+F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+
+F.Intrinsic.Control.If(V.DataTable.dtMaint.RowCount,=,0)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+V.Local.sFileDir.Set(V.DataTable.dtMaint(0).FILE_DIR!FieldValTrim)
+V.Local.sJobForm.Set(V.DataTable.dtMaint(0).JOB_FORMAT!FieldValTrim)
+'True - material sequence || False - misc sequence
+V.Local.bMatMiscSeq.Set(V.DataTable.dtMaint(0).MAT_SEQ!FieldVal)
+
+'Paths for moving files that fail or are uploaded
+F.Intrinsic.String.Build("{0}\Vending\",V.Caller.FilesDir,V.Local.sFileMoved)
+F.Intrinsic.String.Build("{0}\Vending\Exceptions\",V.Caller.FilesDir,V.Local.sFileExceptions)
+
+F.Intrinsic.File.GetFileList(V.Local.sFileDir,V.Local.sFileList)
+'Check for files in the directory
+F.Intrinsic.Control.If(V.Local.sFileList,!=,"")
+	'File names separated by a semi colon
+	F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+	'PART_NO, PART_DESC, DATETIME, USER_ID, JOB_NO, JOB_SUFFIX, JOB_SEQ, ISSUE_QTY, UNIT_COST, DATETIME_LOG, FILE_LOG
+	F.Data.DataTable.CreateFromSQL("GCG_5009_ISSUE_LOG","con","select * from GCG_5009_ISSUE_LOG;",True)
+	F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+	F.Intrinsic.String.Split(V.Local.sFileList,":",V.Local.sFileList)
+	'Loop through files list
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.Local.sFileList.UBound,1)
+		F.Intrinsic.String.Right(V.Local.sFileList(V.Local.iCnt),4,V.Local.sFileType)
+		'Check if file is csv type
+		F.Intrinsic.Control.If(V.Local.sFileType,=,".csv")
+			'Combine directory and file name in list to get file path
+			F.Intrinsic.String.Build("{0}{1}",V.Local.sFileDir,V.Local.sFileList(V.Local.iCnt),V.Local.sFilePath)
+			F.Intrinsic.String.Build("{0}Processed\{1}_{2}_{3}",V.Local.sFileMoved,V.Ambient.Date.FormatYYYYMMDD,V.Ambient.Time.FormatHHNNSS,V.Local.sFileList(V.Local.iCnt),V.Local.sFileMovedPath)
+			F.Intrinsic.File.File2String(V.Local.sFilePath,V.Local.sFile)
+			F.Intrinsic.String.Split(V.Local.sFile,V.Ambient.NewLine,V.Local.sFile)
+			'Loop through lines in the file, start at 1 to skip the column headers in the file
+			F.Intrinsic.Control.For(V.Local.iLine,1,V.Local.sFile.UBound,1)
+				F.Intrinsic.Control.If(V.Local.sFile(V.Local.iLine),=,"")
+					F.Intrinsic.Control.ExitFor(V.Local.iLine)
+				F.Intrinsic.Control.EndIf
+				V.Local.bInvalidJob.Set(False)
+				V.Local.bZeroQtyIssue.Set(False)
+				V.Local.bZeroCostIssue.Set(False)
+				V.Local.bIncorrectFormat.Set(False)
+				V.Local.bInvalidPart.Set(False)
+				V.Local.bInsufficientQty.Set(False)
+				V.Local.sJob.Set("")
+				V.Local.sSfx.Set("")
+				V.Local.sSeq.Set("")
+				V.Local.sOnHandQty.Set("")
+				'\-----------------------------------------/
+				'\	File Makeup:				/
+				'\	0	- Part No 			/
+				'\	1	- Part Description		/
+				'\	2	- Date				/
+				'\	3	- Date - Time			/
+				'\	4	- User ID			/
+				'\	5	- Job/Suffix/Seq		/
+				'\	6	- Ext Field 5	unused	/
+				'\	7	- Ext Field 4	unused	/
+				'\	8	- Issue Quantity		/
+				'\	9	- Unit Cost			/
+				'\----------------------------------------/
+				F.Intrinsic.String.Split(V.Local.sFile(V.Local.iLine),",",V.Local.sLine)
+				F.Intrinsic.String.RPad(V.Local.sLine(0)," ",20,V.Local.sPart)
+				F.Intrinsic.String.RPad(V.Local.sLine(1)," ",30,V.Local.sPartDesc)
+				F.Intrinsic.Date.ConvertDString(V.Local.sLine(2),"MM/DD/YYYY",V.Local.dDate)
+				V.Local.dTime.Set(V.Local.sLine(3))
+				V.Local.sUserID.Set(V.Local.sLine(4))
+				V.Local.sUpload.Set(V.Local.sLine(5))
+				'Skip 6 & 7
+				V.Local.sQty.Set(V.Local.sLine(8))
+				V.Local.sCost.Set(V.Local.sLine(9))
+				V.Local.sLine.Redim(0,0)
+				
+				'Loop through and use the formatting to get the Job, Suffix and Sequence
+				F.Intrinsic.Control.If(V.Local.sUpload.Length,=,V.Local.sJobForm.Length)
+					F.Intrinsic.Control.For(V.Local.iChar,1,V.Local.sUpload.Length,1)
+						F.Intrinsic.String.Mid(V.Local.sJobForm,V.Local.iChar,1,V.Local.sForm)
+						F.Intrinsic.String.Mid(V.Local.sUpload,V.Local.iChar,1,V.Local.sChar)
+						F.Intrinsic.Control.If(V.Local.sForm,!=,"X")
+							F.Intrinsic.Control.SelectCase(V.Local.sForm)
+							F.Intrinsic.Control.Case("J")
+								F.Intrinsic.String.Build("{0}{1}",V.Local.sJob,V.Local.sChar,V.Local.sJob)
+							F.Intrinsic.Control.Case("S")
+								F.Intrinsic.String.Build("{0}{1}",V.Local.sSfx,V.Local.sChar,V.Local.sSfx)
+							F.Intrinsic.Control.Case("Q")
+								F.Intrinsic.String.Build("{0}{1}",V.Local.sSeq,V.Local.sChar,V.Local.sSeq)
+							F.Intrinsic.Control.EndSelect
+						F.Intrinsic.Control.EndIf
+					F.Intrinsic.Control.Next(V.Local.iChar)
+					'Clipping the entered numbers
+					F.Intrinsic.String.Right(V.Local.sJob,6,V.Local.sJob)
+					F.Intrinsic.String.Right(V.Local.sSfx,3,V.Local.sSfx)
+					F.Intrinsic.String.Right(V.Local.sSeq,6,V.Local.sSeq)
+				F.Intrinsic.Control.Else
+					V.Local.sJob.Set("??????")
+					V.Local.sSfx.Set("???")
+					V.Local.sSeq.Set("??????")
+					V.Local.bIncorrectFormat.Set(True)
+				F.Intrinsic.Control.EndIf
+				
+				'Check qty
+				F.Intrinsic.Control.If(V.Local.sQty.Float,=,0,"or",V.Local.sQty,=,"")
+					V.Local.bZeroQtyIssue.Set(True)
+				F.Intrinsic.Control.EndIf
+				
+				'Check Unit Cost
+				F.Intrinsic.Control.If(V.Local.sCost.Float,=,0,"or",V.Local.sCost,=,"")
+					V.Local.bZeroCostIssue.Set(True)
+				F.Intrinsic.Control.Else
+					'Convert Unit cost to total cost
+					F.Intrinsic.Math.Mult(V.Local.sQty.Float,V.Local.sCost.Float,V.Local.fTotal)
+				F.Intrinsic.Control.EndIf
+				
+				'Check maintenance to see if material or miscellaneous sequence was selected
+				F.Intrinsic.Control.If(V.Local.bMatMiscSeq,=,False)
+					V.Local.sSeq.Set("995000")
+				F.Intrinsic.Control.EndIf
+				
+				F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+				F.Intrinsic.Control.If(V.Local.bIncorrectFormat,=,False)
+					'Validate Job
+					F.Intrinsic.String.Build("select JOB from V_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}';",V.Local.sJob.Trim,V.Local.sSfx.Trim,V.Local.sSQL)
+					F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+					V.Local.bInvalidJob.Set(V.Ambient.ExecuteAndReturnEOF)
+				F.Intrinsic.Control.EndIf
+				'\-----------------------------------------------------/
+				'\Added in checks for Inventory Parts	/
+				'\	And On Hand Qty against what is	/
+				'\	being issued to WOs				/
+				'\-----------------------------------------------------/
+				'Validate Part
+				F.Intrinsic.String.Build("select PART from V_INVENTORY_MSTR where PART = '{0}';",V.Local.sPart.Trim,V.Local.sSQL)
+				F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sRet)
+				V.Local.bInvalidPart.Set(V.Ambient.ExecuteAndReturnEOF)
+				F.Intrinsic.Control.If(V.Local.bInvalidPart,=,False)
+					'Validate that there's sufficient On Hand Qty
+					F.Intrinsic.String.Build("select QTY_ONHAND from V_INVENTORY_MSTR where PART = '{0}';",V.Local.sPart.Trim,V.Local.sSQL)
+					F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sOnHandQty)
+					F.Intrinsic.Control.If(V.Local.sQty.Float,>,V.Local.sOnHandQty.Float)
+						V.Local.bInsufficientQty.Set(True)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+				
+				'filter issue log to see if this issue already exists
+				F.Intrinsic.String.Build("PART_NO = '{0}' and DATETIME = '{1}' and USER_ID = '{2}' and JOB_NO = '{3}' and JOB_SUFFIX = '{4}' and JOB_SEQ = '{5}' and ISSUE_QTY = '{6}'",V.Local.sPart.Trim,V.Local.dTime.String,V.Local.sUserID.Trim,V.Local.sJob.Trim,V.Local.sSfx.Trim,V.Local.sSeq,V.Local.sQty,V.Local.sFilter)
+				F.Data.DataView.Create("GCG_5009_ISSUE_LOG","dvCurrentIssue",22,V.Local.sFilter,"")
+				F.Intrinsic.Control.If(V.DataView.GCG_5009_ISSUE_LOG!dvCurrentIssue.RowCount,=,0)
+					F.Intrinsic.Control.If(V.Local.bInvalidJob,=,True,"or",V.Local.bZeroQtyIssue,=,True,V.Local.bZeroCostIssue,=,True,V.Local.bIncorrectFormat,=,True,V.Local.bInvalidPart,=,True,V.Local.bInsufficientQty,=,True)
+						'If you made it here, something is wrong with the part/qty/job in the export file
+						F.Intrinsic.Control.If(V.Local.sExcept.Length,!=,0)
+							'Add a new line if this isn't the first line
+							F.Intrinsic.String.Build("{0}{1}",V.Local.sExcept,V.Ambient.NewLine,V.Local.sExcept)
+						F.Intrinsic.Control.EndIf
+						F.Intrinsic.String.Build("{0}Part:{1},Qty:{2},Unit-Cost:{3},Job:{4},Suffix:{5},Seq:{5},Inv",V.Local.sExcept,V.Local.sPart.Trim,V.Local.sQty,V.Local.sCost,V.Local.sJob.Trim,V.Local.sSfx.Trim,V.Local.sSeq.Trim,V.Local.sExcept)
+						'Invalid Job
+						F.Intrinsic.Control.If(V.Local.bInvalidJob)
+							F.Intrinsic.String.Build("{0} || Invalid-Job",V.Local.sExcept,V.Local.sExcept)
+						F.Intrinsic.Control.EndIf
+						'Issue zero qty
+						F.Intrinsic.Control.If(V.Local.bZeroQtyIssue)
+							F.Intrinsic.String.Build("{0} || Zero-Qty",V.Local.sExcept,V.Local.sExcept)
+						F.Intrinsic.Control.EndIf
+						'Issue zero unit cost
+						F.Intrinsic.Control.If(V.Local.bZeroCostIssue)
+							F.Intrinsic.String.Build("{0} || Zero-Unit-Cost",V.Local.sExcept,V.Local.sExcept)
+						F.Intrinsic.Control.EndIf
+						'Format for Job/Suffix/Seq does not match the length of the upload's data
+						F.Intrinsic.Control.If(V.Local.bIncorrectFormat)
+							F.Intrinsic.String.Build("{0} || Incorrect-Format-Job-Suffix-Seq,Uploaded:{1},Expected-Format:{2}",V.Local.sExcept,V.Local.sUpload,V.Local.sJobForm,V.Local.sExcept)
+						F.Intrinsic.Control.EndIf
+						'Invalid Part
+						F.Intrinsic.Control.If(V.Local.bInvalidPart)
+							F.Intrinsic.String.Build("{0} || Invalid-Part",V.Local.sExcept,V.Local.sExcept)
+						F.Intrinsic.Control.EndIf
+						'Insufficient On Hand Qty
+						F.Intrinsic.Control.If(V.Local.bInsufficientQty)
+							F.Intrinsic.String.Build("{0} || Insufficient-On-Hand-Qty,On-Hand-Qty:{1}",V.Local.sExcept,V.Local.sOnHandQty,V.Local.sExcept)
+						F.Intrinsic.Control.EndIf
+						F.Intrinsic.String.Build("{0} || File: {1}",V.Local.sExcept,V.Local.sFileMovedPath,V.Local.sExcept)
+					F.Intrinsic.Control.Else
+						'Add data to Issue Mat DT
+						F.Intrinsic.String.Split(V.Local.sQty,".",V.Local.sQty)
+						V.Local.sQty.RedimPreserve(0,1)
+						F.Intrinsic.String.Join(V.Local.sQty,".",V.Local.sQty)
+						V.Local.sQty.RedimPreserve(0,0)
+						
+						'Append to log DT
+						F.Data.DataTable.AddRow("GCG_5009_ISSUE_LOG","PART_NO",V.Local.sPart,"PART_DESC",V.Local.sPartDesc,"DATETIME",V.Local.dTime.String,"USER_ID",V.Local.sUserID,"JOB_NO",V.Local.sJob,"JOB_SUFFIX",V.Local.sSfx,"JOB_SEQ",V.Local.sSeq,"ISSUE_QTY",V.Local.sQty.Float,"DATETIME_LOG",V.Ambient.Now.String,"FILE_LOG",V.Local.sFileMovedPath,"ID",-1)
+						
+						F.Data.DataTable.AddRow("450100","Part",V.Local.sPart.Trim,"Quantity",V.Local.sQty,"WONumber",V.Local.sJob,"WOSuffix",V.Local.sSfx,"WOSeq",V.Local.sSeq)
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.EndIf
+				F.Data.DataView.Close("GCG_5009_ISSUE_LOG","dvCurrentIssue")
+			F.Intrinsic.Control.Next(V.Local.iLine)
+			'Move file to Processed Vending File location
+			F.Intrinsic.File.CopyFile(V.Local.sFilePath,V.Local.sFileMovedPath)
+			F.Intrinsic.File.DeleteFile(V.Local.sFilePath)
+			V.Local.sFile.Redim(0,0)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+
+'
+'	F.Intrinsic.Control.If(V.Local.sFileString.Length,!=,0)
+'
+	'IF ISSUE MAT DT IS NOT EMPTY, RUN THE SUB FROM THE LIBRARY AND SAVE THE ISSUE LOG DB TABLE
+	F.Intrinsic.Control.If(V.DataTable.450100.RowCount,>,0)
+'
+'		F.Intrinsic.String.Build("{0}\Vending\{1}_{2}_{3}.csv",V.Caller.FilesDir,V.Caller.CompanyCode,V.Ambient.Date.FormatMMDDYYYY,V.Ambient.Time.FormatHHNNSS,V.Local.sFilePath)
+'		F.Intrinsic.File.String2File(V.Local.sFilePath,V.Local.sFileString)
+'		F.Intrinsic.String.Build("{0}\GAB_4977_Issue_Non_Inv.g2u",V.Caller.GasDir,V.Local.sFilePath)
+'		Function.Global.General.CallSyncGas(V.Local.sFilePath)
+'
+		F.Intrinsic.Control.CallSub(450100Sync)
+		'Save log DT to DB
+		F.Data.DataView.Create("GCG_5009_ISSUE_LOG","dvNewIssues",22,"ID = -1","")
+		F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+		F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues.RowCount--,1)
+			V.Local.dDate.Set(V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).DATETIME!FieldVal)
+			F.Intrinsic.String.Build("insert into GCG_5009_ISSUE_LOG (PART_NO,PART_DESC,DATETIME,USER_ID,JOB_NO,JOB_SUFFIX,JOB_SEQ,ISSUE_QTY,DATETIME_LOG,FILE_LOG) values ('{0}','{1}','{2} {3}','{4}','{5}','{6}','{7}','{8}',NOW(),'{9}')",V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).PART_NO!FieldVal,V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).PART_DESC!FieldVal,V.Local.dDate.FormatYYYY-MM-DD,V.Local.dDate.FormatHH:NN:SS,V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).USER_ID!FieldVal,V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).JOB_NO!FieldVal,V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).JOB_SUFFIX!FieldVal,V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).JOB_SEQ!FieldVal,V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).ISSUE_QTY!FieldVal,V.DataView.GCG_5009_ISSUE_LOG!dvNewIssues(V.Local.iCnt).FILE_LOG!FieldVal,V.Local.sSQL)
+			F.ODBC.Connection!con.Execute(V.Local.sSQL)
+		F.Intrinsic.Control.Next(V.Local.iCnt)
+		F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+		F.Data.DataView.Close("GCG_5009_ISSUE_LOG","dvNewIssues")
+'This function is now being moved to a different Menu Item
+'		F.Intrinsic.Control.CallSub(GeneratePO)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.If(V.Local.sExcept.Length,!=,0)
+		'If there is information in the exceptions string, save the exceptions file to the exceptions directory
+		F.Intrinsic.String.Build("{0}_{1}_EXCEPTIONS.txt",V.Ambient.Date.FormatMMDDYYYY,V.Ambient.Time.FormatHHNNSS,V.Local.sFile)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sFileExceptions,V.Local.sFile,V.Local.sFilePath)
+		F.Intrinsic.File.String2File(V.Local.sFilePath,V.Local.sExcept)
+	F.Intrinsic.Control.EndIf
+	F.Data.DataTable.Close("GCG_5009_ISSUE_LOG")
+F.Intrinsic.Control.EndIf
+
+'Using mask 127, the DateSubtractWorkdays function will include Saturdays and Sundays (1:Sunday,2:Monday,4:Tuesday,8:Wednesday,16:Thursday,32:Friday,64:Saturday)
+F.Intrinsic.Date.DateSubtractWorkdays(V.Ambient.Now,V.DataTable.dtMaint(0).LOG_LENGTH!FieldVal,127,V.Local.dLogCutoff)
+F.Intrinsic.Date.DateSubtractWorkdays(V.Ambient.Now,V.DataTable.dtMaint(0).HIST_LENGTH!FieldVal,127,V.Local.dHistCutoff)
+
+'delete from history if anything is logged from before the History Cutoff
+F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+F.Intrinsic.String.Build("select * from GCG_5009_ISSUE_LOG where DATETIME_LOG < '{0}';",V.Local.dHistCutoff.PervasiveDate,V.Local.sSQL)
+F.Data.DataTable.CreateFromSQL("dtLog","con",V.Local.sSQL)
+F.Intrinsic.String.Build("delete from GCG_5009_ISSUE_LOG where DATETIME_LOG < '{0}';",V.Local.dHistCutoff.PervasiveDate,V.Local.sSQL)
+F.ODBC.Connection!con.Execute(V.Local.sSQL)
+F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtLog.RowCount--,1)
+	'check if linked file still exists and delete it if so
+	F.Intrinsic.File.Exists(V.DataTable.dtLog(V.Local.iCnt).FILE_LOG!FieldValTrim,V.Local.bFileExists)
+	F.Intrinsic.Control.If(V.Local.bFileExists)
+		F.Intrinsic.File.DeleteFile(V.DataTable.dtLog(V.Local.iCnt).FILE_LOG!FieldValTrim)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.iCnt)
+
+'Scrub through exception logs looking for ones that have a date before log cutoff
+F.Intrinsic.File.GetFileList(V.Local.sFileExceptions,V.Local.sFileList)
+F.Intrinsic.Control.If(V.Local.sFileList,!=,"")
+	F.Intrinsic.String.Split(V.Local.sFileList,":",V.Local.sFileList)
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.Local.sFileList.UBound,1)
+		F.Intrinsic.String.Split(V.Local.sFileList(V.Local.iCnt),"_",V.Local.sFile)
+		'position 0 is the date in MMDDYYYY form
+		F.Intrinsic.Date.ConvertDString(V.Local.sFile(0),"MMDDYYYY",V.Local.dDate)
+		V.Local.sFile.Redim(0,0)
+		
+		'Check to see if Date on file is before or after cutoff date
+		F.Intrinsic.Date.DateDiff("D",V.Local.dLogCutoff,V.Local.dDate,V.Local.iDateDiff)
+		F.Intrinsic.Control.If(V.Local.iDateDiff,<,0)
+			'If here, then log date expiration has passed
+			F.Intrinsic.String.Build("{0}{1}",V.Local.sFileExceptions,V.Local.sFileList(V.Local.iCnt),V.Local.sFilePath)
+			F.Intrinsic.File.File2String(V.Local.sFilePath,V.Local.sFile)
+			'Split on newline to loop through the lines
+			F.Intrinsic.String.Split(V.Local.sFile,V.Ambient.NewLine,V.Local.sFile)
+			F.Intrinsic.Control.For(V.Local.iLine,0,V.Local.sFile.UBound,1)
+				'Splitting on this string because it is just before the path to the failed export file
+				F.Intrinsic.String.Split(V.Local.sFile(V.Local.iLine),"File: ",V.Local.sLine)
+				V.Local.sFileFailedPath.Set(V.Local.sLine(1))
+				'Delete failed export file if it exists
+				F.Intrinsic.File.PathExists(V.Local.sFileFailedPath,V.Local.bFileExists)
+				F.Intrinsic.Control.If(V.Local.bFileExists)
+					F.Intrinsic.File.DeleteFile(V.Local.sFileFailedPath)
+				F.Intrinsic.Control.EndIf
+				V.Local.sLine.Redim(0,0)
+			F.Intrinsic.Control.Next(V.Local.iLine)
+			V.Local.sFile.Redim(0,0)
+			
+			'Delete log file
+			F.Intrinsic.File.DeleteFile(V.Local.sFilePath)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+F.Intrinsic.Control.EndIf
+
+F.Data.DataTable.Close("dtMaint")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.IntegrateMSCFile.End
+
+Program.Sub.GeneratePO.Start
+'Using the log DT, create a PO with lines for the parts that were issued to WOs and attach the WO seq to the PO Line
+'Use DT for generating PO's all at once
+V.Local..BulkDeclareString(sError,sVendor,sGLAcct,sEmails,sPart,sPartDesc,sCost,sQty,sPOFile,sFilePath,sParams,sSendEmails,sUserEmail,sBody,sSQL,sPONum,sCnt,sTotal)
+V.Local..BulkDeclareLong(iCnt,iUser)
+V.Local.dDueDate.Declare(Date)
+V.Local.fTotal.Declare(Float)
+F.Intrinsic.Control.Try
+
+V.Local.sVendor.Set(V.DataTable.dtMaint(0).VENDOR!FieldValTrim)
+V.Local.sGLAcct.Set(V.DataTable.dtMaint(0).GL_ACCT!FieldValTrim)
+V.Local.sEmails.Set(V.DataTable.dtMaint(0).EMAIL!FieldValTrim)
+F.Intrinsic.Date.DateAddWorkdays(V.Ambient.Now,V.DataTable.dtMaint(0).DUE_LEAD!FieldVal,V.Local.dDueDate)
+
+'Using callwrapper for PURA64GI (175100) create tab delimited file for creating a new PO
+'File struct: Vendor; Part; (Location); Due Date; Description; Inventory Unit of Measure; Inventory Cost; Inventory Quantity; Purchase Order Unit of Measure; Purchase Order Cost; Purchase Order Quantity; GL Account; Extension
+F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtPOLines.RowCount--,1)
+	F.Intrinsic.Control.If(V.Local.sPOFile.Length,!=,0)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sPOFile,V.Ambient.NewLine,V.Local.sPOFile)
+	F.Intrinsic.Control.EndIf
+	V.Local.sPart.Set(V.DataTable.dtPOLines(V.Local.iCnt).PART!FieldValTrim)
+	V.Local.sPartDesc.Set(V.DataTable.dtPOLines(V.Local.iCnt).PARTDESC!FieldValTrim)
+	V.Local.sCost.Set(V.DataTable.dtPOLines(V.Local.iCnt).COST!FieldValTrim)
+	V.Local.sQty.Set(V.DataTable.dtPOLines(V.Local.iCnt).QTY!FieldValTrim)
+	V.Local.sTotal.Set(V.DataTable.dtPOLines(V.Local.iCnt).EXT!FieldValTrim)
+	F.Intrinsic.String.Build("{1}{2}{0}{3}{0}{0}{4}{0}{5}{0}EA{0}{6}{0}{7}{0}EA{0}{6}{0}{7}{0}{8}{0}{9}",V.Ambient.Tab,V.Local.sPOFile,V.Local.sVendor,V.Local.sPart,V.Local.dDueDate.FormatYYYYMMDD,V.Local.sPartDesc,V.Local.sCost,V.Local.sQty,V.Local.sGLAcct,V.Local.sTotal,V.Local.sPOFile)
+F.Intrinsic.Control.Next(V.Local.iCnt)
+
+'Create file, run program, then delete file
+F.Intrinsic.String.Build("{0}\PUR{1}UPLOAD.txt",V.Caller.FilesDir,V.Caller.CompanyCode,V.Local.sFilePath)
+F.Intrinsic.File.String2File(V.Local.sFilePath,V.Local.sPOFile)
+F.Intrinsic.String.Build("{0}!*!Y!*!Y!*!Y",V.Local.sFilePath,V.Local.sParams)
+F.Global.General.CallWrapperSync(175100,V.Local.sParams)
+F.Intrinsic.File.DeleteFile(V.Local.sFilePath)
+
+'Get latest Purchase Order Number created
+F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+F.Intrinsic.String.Build("select top 1 PURCHASE_ORDER from V_PO_HEADER where VENDOR = '{0}' order by PURCHASE_ORDER desc;",V.Local.sVendor,V.Local.sSQL)
+F.ODBC.Connection!con.ExecuteAndReturn(V.Local.sSQL,V.Local.sPONum)
+F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+
+F.Intrinsic.Control.If(V.Local.sEmails.Length,!=,0)
+	'Generate Email
+	F.Intrinsic.String.Split(V.Local.sEmails,",",V.Local.sEmails)
+	F.Intrinsic.String.Build("*!*{0}",V.Local.sEmails(0),V.Local.sSendEmails)
+	F.Intrinsic.Control.For(V.Local.iCnt,1,V.Local.sEmails.UBound,1)
+		F.Intrinsic.String.Build("{0}@!@*!*{1}",V.Local.sSendEmails,V.Local.sEmails(V.Local.iCnt),V.Local.sSendEmails)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	F.Intrinsic.String.Build("The following PO was generated from the MSC Vending Machine Integration with Global Shop program:{0}{0}{1}",V.Ambient.NewLine,V.Local.sPONum,V.Local.sBody)
+	F.Global.Security.GetUserId(V.Caller.User,V.Caller.CompanyCode,V.Local.iUser)
+	F.Global.Security.GetUserEmail(V.Caller.User,V.Caller.CompanyCode,V.Local.sUserEmail)
+	F.Intrinsic.String.Build("{0}*!*MSC Vending Machine Integration",V.Local.sUserEmail,V.Local.sUserEmail)
+	F.Global.Messaging.QueueMessage(V.Caller.CompanyCode,V.Local.iUser,"GCG_5009_MSC_Integration.g2u","PO Created from Vending Machine",V.Local.sUserEmail,V.Local.sSendEmails,V.Local.sBody)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.GeneratePO.End
+
+Program.Sub.cmdGLAcctBRW_Click.Start
+'Opens BRW for GL Accounts
+V.Local.sError.Declare(String)
+V.Local.sRet.Declare(String)
+F.Intrinsic.Control.Try
+
+'Opens GL Account BRW
+F.Intrinsic.UI.Browser(6000,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet.IsCancel,=,False)
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.Form.txtGLAcct.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdGLAcctBRW_Click.End
+
+Program.Sub.cmdVendorBRW_Click.Start
+'Opens BRW for Vendors
+V.Local.sError.Declare(String)
+V.Local.sRet.Declare(String)
+F.Intrinsic.Control.Try
+
+'Opens Vendor BRW
+F.Intrinsic.UI.Browser(300,"",V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet.IsCancel,=,False)
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.Form.txtVendor.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdVendorBRW_Click.End
+
+Program.Sub.OpenWeeklyReport.Start
+'Have customer select weekly report and then get list of parts and Qtys
+V.Local.sError.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.sFilePath.Declare(String)
+V.Local.sFileExt.Declare(String)
+F.Intrinsic.Control.Try
+
+'Open File Dialog with excel sheet filter
+F.Intrinsic.String.Build("{0}\Users\{1}\Documents\",V.System.HomeDrive,V.System.UserName,V.Local.sFilePath)
+F.Intrinsic.UI.ShowOpenFileDialog(V.Local.sFilePath,"Microsoft Excel Spreadsheet|*.xls;*.xlsx|Comma Separated Variable|*.csv|All Files|*.*",V.Local.sFilePath)
+
+F.Intrinsic.Control.If(V.Local.sFilePath.IsCancel,=,False)
+	'File was selected, check to see if it is *.xls, *.xlsx, or *.csv
+	F.Intrinsic.String.Split(V.Local.sFilePath,".",V.Local.sTemp)
+	V.Local.sFileExt.Set(V.Local.sTemp(V.Local.sTemp.UBound))
+	V.Local.sTemp.Redim(0,0)
+	F.Intrinsic.Control.If(V.Local.sFileExt,=,"xls","OR",V.Local.sFileExt,=,"xlsx")
+		'User selected excel spreadsheet format
+		F.Intrinsic.Control.CallSub(UploadWeeklyXLS,"sFilePath",V.Local.sFilePath)
+	F.Intrinsic.Control.ElseIf(V.Local.sFileExt,=,"csv")
+		'User selected csv format
+		F.Intrinsic.Control.CallSub(UploadWeeklyCSV,"sFilePath",V.Local.sFilePath)
+	F.Intrinsic.Control.Else
+		'User selected format that program can't recognize
+		F.Intrinsic.UI.Msgbox("Exiting program","Unsupported file format selected")
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.OpenWeeklyReport.End
+
+Program.Sub.UploadWeeklyXLS.Start
+'Parse XLS weekly report
+'V.Args.sFilePath
+V.Local.sError.Declare(String)
+V.Local.sFileContents.Declare(String)
+V.Local.sLine.Declare(String)
+V.Local.iLine.Declare(Long)
+V.Local.sPart.Declare(String)
+V.Local.sPartDesc.Declare(String)
+V.Local.sPOCost.Declare(String)
+V.Local.sPOQty.Declare(String)
+V.Local.sPOExt.Declare(String)
+F.Intrinsic.Control.Try
+
+F.Automation.MSExcel.ReadSpreadsheet(V.Args.sFilePath,V.Local.sFileContents)
+F.Intrinsic.String.Split(V.Local.sFileContents,"$!$",V.Local.sFileContents)
+'Create Dt to write PO Line entries to
+F.Data.DataTable.Create("dtPOLines",True)
+F.Data.DataTable.AddColumn("dtPOLines","PART","String")
+F.Data.DataTable.AddColumn("dtPOLines","PARTDESC","String")
+F.Data.DataTable.AddColumn("dtPOLines","COST","String")
+F.Data.DataTable.AddColumn("dtPOLines","QTY","String")
+F.Data.DataTable.AddColumn("dtPOLines","EXT","String")
+
+F.Intrinsic.Control.For(V.Local.iLine,0,V.Local.sFileContents.UBound,1)
+	F.Intrinsic.String.Split(V.Local.sFileContents(V.Local.iLine),"*!*",V.Local.sLine)
+	V.Local.sPart.Set(V.Local.sLine(0))
+	V.Local.sPartDesc.Set(V.Local.sLine(1))
+	F.Intrinsic.String.TrimCharL(V.Local.sLine(12),"$",V.Local.sPOCost)
+	V.Local.sPOQty.Set(V.Local.sLine(13))
+	F.Intrinsic.String.TrimCharL(V.Local.sLine(14),"$",V.Local.sPOExt)
+	F.Intrinsic.Control.If(V.Local.sPOQty.IsNumeric,=,True,"AND",V.Local.sPOQty.Float,>,0)
+		'The Refill to Max column has a numeric entry that is greater than 0, so we need to add it to the DT
+		F.Data.DataTable.AddRow("dtPOLines","PART",V.Local.sPart,"PARTDESC",V.Local.sPartDesc,"COST",V.Local.sPOCost,"QTY",V.Local.sPOQty,"EXT",V.Local.sPOExt)
+	F.Intrinsic.Control.EndIf
+	
+	V.Local.sLine.Redim(0,0)
+F.Intrinsic.Control.Next(V.Local.iLine)
+V.Local.sFileContents.Redim(0,0)
+
+'open maint DT
+F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+F.Data.DataTable.CreateFromSQL("dtMaint","con","select * from GCG_5009_MSC_MAINT;",True)
+F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+'run the generate PO function
+F.Intrinsic.Control.CallSub(GeneratePO)
+'close DTs
+F.Data.DataTable.Close("dtPOLines")
+F.Data.DataTable.Close("dtMaint")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.UploadWeeklyXLS.End
+
+Program.Sub.UploadWeeklyCSV.Start
+'Parse CSV weekly report
+'V.Args.sFilePath
+V.Local.sError.Declare(String)
+V.Local.sFileContents.Declare(String)
+V.Local.sLine.Declare(String)
+V.Local.iLine.Declare(Long)
+V.Local.sPart.Declare(String)
+V.Local.sPartDesc.Declare(String)
+V.Local.sPOCost.Declare(String)
+V.Local.sPOQty.Declare(String)
+V.Local.sPOExt.Declare(String)
+F.Intrinsic.Control.Try
+
+F.Intrinsic.File.File2String(V.Args.sFilePath,V.Local.sFileContents)
+F.Intrinsic.String.Split(V.Local.sFileContents,V.Ambient.NewLine,V.Local.sFileContents)
+'Create Dt to write PO Line entries to
+F.Data.DataTable.Create("dtPOLines",True)
+F.Data.DataTable.AddColumn("dtPOLines","PART","String")
+F.Data.DataTable.AddColumn("dtPOLines","PARTDESC","String")
+F.Data.DataTable.AddColumn("dtPOLines","COST","String")
+F.Data.DataTable.AddColumn("dtPOLines","QTY","String")
+F.Data.DataTable.AddColumn("dtPOLines","EXT","String")
+
+F.Intrinsic.Control.For(V.Local.iLine,0,V.Local.sFileContents.UBound,1)
+	F.Intrinsic.String.Split(V.Local.sFileContents(V.Local.iLine),",",V.Local.sLine)
+	V.Local.sPart.Set(V.Local.sLine(0))
+	V.Local.sPartDesc.Set(V.Local.sLine(1))
+	F.Intrinsic.String.TrimCharL(V.Local.sLine(12),"$",V.Local.sPOCost)
+	V.Local.sPOQty.Set(V.Local.sLine(13))
+	F.Intrinsic.String.TrimCharL(V.Local.sLine(14),"$",V.Local.sPOExt)
+	F.Intrinsic.Control.If(V.Local.sPOQty.IsNumeric,=,True,"AND",V.Local.sPOQty.Float,>,0)
+		'The Refill to Max column has a numeric entry that is greater than 0, so we need to add it to the DT
+		F.Data.DataTable.AddRow("dtPOLines","PART",V.Local.sPart,"PARTDESC",V.Local.sPartDesc,"COST",V.Local.sPOCost,"QTY",V.Local.sPOQty,"EXT",V.Local.sPOExt)
+	F.Intrinsic.Control.EndIf
+	
+	V.Local.sLine.Redim(0,0)
+F.Intrinsic.Control.Next(V.Local.iLine)
+V.Local.sFileContents.Redim(0,0)
+
+'open maint DT
+F.Intrinsic.Control.CallSub(OpenConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+F.Data.DataTable.CreateFromSQL("dtMaint","con","select * from GCG_5009_MSC_MAINT;",True)
+F.Intrinsic.Control.CallSub(CloseConnection,"sOtherSubroutine",V.Ambient.CurrentSubroutine)
+'run the generate PO function
+F.Intrinsic.Control.CallSub(GeneratePO)
+'close DTs
+F.Data.DataTable.Close("dtPOLines")
+F.Data.DataTable.Close("dtMaint")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.UploadWeeklyCSV.End
